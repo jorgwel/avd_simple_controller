@@ -1,0 +1,68 @@
+
+http://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
+
+COMMANDS EXISTING VALIDATION: adb, android
+
+**All leaf options have:
+	NO MORE PARAMS VALIDATION : "Error: devices parameters have no subparameters"
+
+ONLY SOME SUB PARAMETERS VALIDATION : "Error: only list, start, stop, aap, rapp and uall are allowed"
+
+if list
+	- ONLY SOME SUB PARAMETERS VALIDATION : "Error: only 'devices' and 'apps' are allowed"
+	if devices
+	- ONLY SOME SUB PARAMETERS VALIDATION : "Error: only 'running' and '' are allowed"
+		if running
+			echo "listing running adv"
+		else
+			echo "listing all created adv"
+	if apps
+	- ONLY SOME SUB PARAMETERS VALIDATION : "Error: only 'installed' and '' are allowed"
+		if installed
+			echo "listing all installed referenced apps"
+		else
+			echo "listing all referenced apps"
+		
+if start
+	echo "Starting all devices"
+if stop
+	echo "Stopping all devices"
+
+if aapp <package>
+	VALIDATION EXISTING PARAM <package>
+	if <package>
+		echo "Adding app <package>"
+
+if rapp <package>
+	VALIDATION EXISTING PARAM <package>
+	if <package>
+		echo "Removing app <package>"
+
+if uall
+	echo "Uninstall all"
+
+
+
+
+PS3='Please enter your choice: '
+options=("Option 1" "Option 2" "Option 3" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Option 1")
+            echo "you chose choice 1"
+            ;;
+        "Option 2")
+            echo "you chose choice 2"
+            ;;
+        "Option 3")
+            echo "you chose choice 3"
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
+
+21007
