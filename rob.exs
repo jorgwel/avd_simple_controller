@@ -1,4 +1,4 @@
-#IO.puts "Hello puts  Hello my "
+#Io.puts "Hello puts  Hello my "
 #has_more_params = fn list_of_params -> length list_of_params
 # end
 
@@ -13,13 +13,56 @@
 #    print_multiple_times(msg, n - 1)
 #  end
 
+apps_options = [
+	{
+		:installed, nil
+	}
+]
 
-options=OptionParser.parse(["asc list devices running"])
-#IO.puts "Tail -> #{elem(options,1)}"
-new_options=elem(options, 1)
-#IO.puts "N ->#{n}"
+devices_options = [
+	{
+		:running, nil
+	}
+]
+
+list_options = [
+	{
+		:devices, devices_options
+	},
+  {
+		:apps, apps_options
+	}
+]
+
+asc_options =		[
+	{
+		:uall , nil
+	},
+	{
+		:list , list_options
+	},
+	{
+		:start, nil
+	},
+	{
+		:stop, nil
+	},
+	{
+		:aapp, nil
+	},
+	{
+		:rapp, nil
+	}
+]
+
+
+options = [{:asc, asc_options}]
+
+
 
 defmodule Recursion do
+	
+	
 	def print_options(options, n) do
 		IO.puts "Tail -> #{tl(options)}"
 		IO.puts "N ->#{n}"
@@ -36,23 +79,13 @@ defmodule Recursion do
 	end
 end
 
-orders_tree=["asc":
-						 [
-							 "uall":nil,
-							 "list":[
-								 "devices":[
-									 "running"
-								 ],
-								 "apps":[
-									 "installed"
-								 ]
-							 ],
-							 "start":nil,
-							 "stop":nil,
-							 "aapp":nil,
-							 "rapp":nil
-						 ]
-						]
+
+
+options=OptionParser.parse(["asc list devices running"])
+#IO.puts "Tail -> #{elem(options,1)}"
+new_options=elem(options, 1)
+#IO.puts "N ->#{n}"
+
 
 
 IO.puts is_binary new_options
